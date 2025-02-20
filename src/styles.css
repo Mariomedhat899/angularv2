@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@300&display=swap');
+@import "tailwindcss";
+@source "../node_modules/flowbite";
+
+
+@theme{
+    --color-main-color:#0aad0a;
+    --color-light-color:#f0f3f2;
+    --shadow-shadow: rgba(145,158,171,.2) 0px 2px 4px -1px,rgba(145,158,171,.14) 0px 4px 5px 0px,rgba(145,158,171,.12) 0px 1px 10px 0px;
+    --font-main-font:'Encode Sans Expanded', sans-serif;
+    --color-rating-color:#ffc908;
+}
+@layer components{
+   .main-btn{
+    @apply bg-main-color text-white px-5 py-3 translate-y-full  rounded-2xl w-full  cursor-pointer transition duration-700 my-5;
+   }
+   .main-input {
+    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500;
+  }
+}
+
+
+body{
+    font-family: var(--font-family) !important;
+}
+

@@ -1,0 +1,77 @@
+<section class="my-10 mt-20">
+  <div class="lg:max-w-2xl max-w-sm mx-auto">
+    <h2 class="text-4xl mb-5 ms-2 font-bold">Register Now:</h2>
+    <form class="shadow-2xl border border-gray-200 p-10 rounded-3xl" [formGroup]="authform" (ngSubmit)="submitForm()">
+      <input type="text" formControlName="name" class="main-input mb-5" placeholder="Enter Your Name" />
+      @let nameControl = authform.get('name');
+      @if (nameControl?.errors && nameControl?.touched) {
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-3xl relative mb-5">
+          <ul class="list-disc ms-2">
+            @if (nameControl?.getError('required')) {
+              <li>Input Is Required.</li>
+            }
+            @if (nameControl?.getError('minlength')) {
+              <li>Input Must Be At Least 2 Characters Long.</li>
+            }
+            @if (nameControl?.getError('maxlength')) {
+              <li>Input Must Not Exceed 20 Characters.</li>
+            }
+          </ul>
+        </div>
+      }
+
+      <input type="email" formControlName="email" class="main-input mb-5" placeholder="Enter Your Email" />
+      @let emailControl = authform.get('email');
+      @if (emailControl?.errors && emailControl?.touched) {
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-3xl relative mb-5">
+          <ul class="list-disc ms-2">
+            @if (emailControl?.getError('required')) {
+              <li>Input Is Required.</li>
+            }
+            @if (emailControl?.getError('email')) {
+              <li>Please Enter A Valid Email Address.</li>
+            }
+          </ul>
+        </div>
+      }
+
+      <input type="password" formControlName="password" class="main-input mb-5" placeholder="Enter Your Password" />
+      @let passwordControl = authform.get('password');
+      @if (passwordControl?.errors && passwordControl?.touched) {
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-3xl relative mb-5">
+          <ul class="list-disc ms-2">
+            @if (passwordControl?.getError('required')) {
+              <li>Input Is Required.</li>
+            }
+            @if (passwordControl?.getError('pattern')) {
+              <li>Password must be between 8 and 20 characters long.</li>
+              <li>Password must contain at least one digit (0-9).</li>
+              <li>Password must contain at least one lowercase letter (a-z).</li>
+              <li>Password must contain at least one uppercase letter (A-Z).</li>
+              <li>Password must contain at least one special character.</li>
+              <li>Password must not contain any whitespace characters.</li>
+            }
+          </ul>
+        </div>
+      }
+
+      <input type="password" formControlName="rePassword" class="main-input mb-5" placeholder="Renter Your Password" />
+      @let rePasswordControl = authform.get('rePassword');
+      @if (rePasswordControl?.errors && rePasswordControl?.touched) {
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-3xl relative mb-5">
+          <ul class="list-disc ms-2">
+            @if (rePasswordControl?.getError('required')) {
+              <li>Input Is Required.</li>
+            }
+            @if (authform.errors?.['mismatch'] && rePasswordControl?.touched) {
+              <li>Passwords do not match.</li>
+            }
+          </ul>
+        </div>
+      }
+
+      <button  type="submit" class="main-btn translate-y-0">Submit</button>
+    </form>
+  </div>
+</section>
+
